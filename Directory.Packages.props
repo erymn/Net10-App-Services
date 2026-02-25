@@ -9,7 +9,7 @@
     <HotChocolate>15.1.11</HotChocolate>
 
     <!--Disable this if create using gRPC-->
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -179,8 +179,8 @@ property. -->
     <PackageVersion Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
-  </ItemGroup>
+  </ItemGroup> -->
 </Project>
