@@ -120,4 +120,79 @@ Steps to do:
    
    ![](assets/2026-02-26-12-00-30-{6F749A1E-3AB8-42D7-9FC6-F79D295C0722}.png)
 
-8. 
+# Introduction To .Net MAUI
+
+Cek .Net MAUI installed or not
+
+```bash
+dotnet workload list
+```
+
+![](assets/2026-02-26-14-21-26-{7A5106BC-0DEF-4682-9DC3-706E0D97F8E1}.png)
+
+If does not exists then install using this command:
+
+```bash
+dotnet workload install maui
+```
+
+To update all existing workload installations:
+
+```bash
+dotnet workload update
+```
+
+If something missing, use this command to
+
+```bash
+dotnet workload restore <projectname>
+```
+
+remove unneeded workload you can used this command:
+
+```bash
+dotnet workload clean
+```
+
+To build an application using .Net Maui, component categorized into:
+
+- Pages --> represent application screens, `Shell`, `ContentPage`, `NavigationPane`, `FlyoutPage`, `TabbedPane`
+
+- Layouts --> structure of a combination, `Grid`, `StackLayout`, `FlexLayout`
+
+- Views --> represent a single UI component, `CarouselView`, `CollectionView`, 
+  `Label`, `Entry`, `Editor`, and `Button`
+
+- Cells --> represent a single item in a list or table view, `TextCell`, `ImageCell`, 
+  `SwitchCell`, and `EntryCell`
+
+Writing platform specific code
+
+```csharp
+#if __ANDROID__
+  Handlers.EntryHandler.EntryMapper[nameof(IEntry.BackgroundColor)] = (h, v) =>
+  {
+    (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
+  };
+#endif
+```
+
+Predefine compiler constant
+
+• __ANDROID__
+• __IOS__
+• WINDOWS
+
+Compiler #if in .Net MAUI is different in #if in C#
+
+```csharp
+#if __IOS__
+  // iOS-specific statements
+#elif __ANDROID__
+  // Android-specific statements
+#elif WINDOWS
+  // Windows-specific statements
+#endif
+```
+
+s
