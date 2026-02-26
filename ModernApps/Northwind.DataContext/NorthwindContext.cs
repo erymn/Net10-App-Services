@@ -74,17 +74,15 @@ public partial class NorthwindContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             SqlConnectionStringBuilder builder = new();
-            builder.DataSource = "tcp:127.0.0.1\\azure-edge,14331"; // SQL Server in
-            container.builder.InitialCatalog = "Northwind";
+            builder.DataSource = "tcp:127.0.0.1\\azure-edge,14331"; // SQL Server in container.
+            builder.InitialCatalog = "Northwind";
             builder.TrustServerCertificate = true;
             builder.MultipleActiveResultSets = true;
             // Because we want to fail faster. Default is 15 seconds.
             builder.ConnectTimeout = 3;
             // SQL Server authentication.
-            builder.UserID = Environment
-                .GetEnvironmentVariable("MY_SQL_USR");
-            builder.Password = Environment
-                .GetEnvironmentVariable("MY_SQL_PWD");
+            builder.UserID = Environment.GetEnvironmentVariable("MY_SQL_USR");
+            builder.Password = Environment.GetEnvironmentVariable("MY_SQL_PWD");
             optionsBuilder.UseSqlServer(builder.ConnectionString);
             optionsBuilder.LogTo(NorthwindContextLogger.WriteLine,
                 new[] { Microsoft.EntityFrameworkCore

@@ -6,6 +6,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NorthwindDb", "NorthwindDb"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.DataContext", "Northwind.DataContext\Northwind.DataContext.csproj", "{E1173AFF-721B-46F4-A176-931EE8A4AF15}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{4BC321B5-54F0-4486-87DD-11897CC8CF44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApps.UnitTest", "ModernApps.UnitTest\ModernApps.UnitTest.csproj", "{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +24,14 @@ Global
 		{E1173AFF-721B-46F4-A176-931EE8A4AF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1173AFF-721B-46F4-A176-931EE8A4AF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1173AFF-721B-46F4-A176-931EE8A4AF15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{45C2BF9D-7A41-44AF-8C1D-20D581753FAD} = {EBE7D1D4-7AAC-4DEC-9FFB-CECD7C8B2B57}
 		{E1173AFF-721B-46F4-A176-931EE8A4AF15} = {EBE7D1D4-7AAC-4DEC-9FFB-CECD7C8B2B57}
+		{D6200A2B-C5B6-480F-9817-ECFCB6D7AE04} = {4BC321B5-54F0-4486-87DD-11897CC8CF44}
 	EndGlobalSection
 EndGlobal

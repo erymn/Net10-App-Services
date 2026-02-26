@@ -15,6 +15,7 @@ Add sql-scripts folder
 ```
 
 ## Pulling the SQL Server Database 2025
+
 Because SQL Server image run at 64bit, you can use Azure SQL Edge, but the Azure SQL Edge does not supported by Microsoft, but you still can use it.
 
 ```bash
@@ -22,6 +23,7 @@ docker pull mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ## Running the SQL Server Database 2025
+
 ```bash
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrongPassword123!" -p 1433:1433 --name sqlserver2025 -d mcr.microsoft.com/mssql/server:2025-latest
 ```
@@ -35,19 +37,87 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrongPassword123!" -p 1
 ```
 
 ## Create Northwind Entity Models
+
 Create ModernApps solutions and add Northwind.EntityModels
 
 Steps to do:
+
 1. Build the project
-    ```bash
-    dotnet build
-    ```
+   
+   ```bash
+   dotnet build
+   ```
+
 2. Do Database Scaffold to generate Entity Class from table(s)
-    ```bash
-    dotnet ef dbcontext scaffold "Data Source=[Database Server];Initial Catalog=Northwind;User Id=[secret_user];Password=[secret_password];TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer --namespace Northwind.EntityModels --data-annotations
-    ```
+   
+   ```bash
+   dotnet ef dbcontext scaffold "Data Source=[Database Server];Initial Catalog=Northwind;User Id=[secret_user];Password=[secret_password];TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer --namespace Northwind.EntityModels --data-annotations
+   ```
+   
     The command to perform: `dotnet ef dbcontext scaffold`
     The connection string: "Data Source=tcp:127.0.0.1,1433;Initial Catalog=Northwind;User Id=sa;Password= s3cret-Ninja;TrustServerCertificate=true;"
     The database provider: `Microsoft.EntityFrameworkCore.SqlServer`
     The namespace: `--namespace Northwind.EntityModels`
     To use data annotations as well as the Fluent API: `--data-annotations`
+
+3. Add Northwind.DataContext
+
+4. Add Northwind.DataContext.Extensions
+
+5. Setting user and password for SQL Server (using environtment variables)
+   On windows using:
+   
+   ```bash
+   setx MY_SQL_USR "sa"
+   setx MY_SQL_PWD "s3cret-Ninja"
+   ```
+   
+   On Linux using:
+   
+   ```bash
+   export MY_SQL_USR="sa"
+   export MY_SQL_PWD="s3cret-Ninja"
+   ```
+
+6. Modify some class and add some validation
+   Customer Class
+   
+   ```csharp
+   [Key]
+   [StringLength(5)]
+   [RegularExpression("[A-Z]{5}")]
+   public string CustomerId { get; set; } = null!;
+   ```
+   
+   Order Class
+   
+   ```csharp
+   [Key]
+   [StringLength(5)]
+   [RegularExpression("[A-Z]{5}")]
+   public string CustomerId { get; set; } = null!;
+   ```
+
+7. Add Unit Test
+   
+   Create unit test project inside ModernApps solution
+   
+   ![](assets/2026-02-26-11-57-51-{AB17A488-D6D0-42B8-98CC-80190CB85927}.png)
+   
+   ![](assets/2026-02-26-11-58-14-{CC66AC6D-1B4E-435C-952B-3F72B2FBDB94}.png)
+   
+   Run Unit Test
+   
+   ![](assets/2026-02-26-11-58-43-{20C1D2A9-3467-4808-820C-E8AFF81C2F86}.png)
+   
+   ![](assets/2026-02-26-11-58-56-{FC4590AA-1F44-4C09-A404-7D2781D20908}.png)
+   
+   Using Terminal 
+   
+   ```bash
+   dotnet test
+   ```
+   
+   ![](assets/2026-02-26-12-00-30-{6F749A1E-3AB8-42D7-9FC6-F79D295C0722}.png)
+
+8. 
